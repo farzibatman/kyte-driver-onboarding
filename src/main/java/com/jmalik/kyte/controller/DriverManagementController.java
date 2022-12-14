@@ -35,6 +35,16 @@ public class DriverManagementController {
     return Response.success(driverManagementFacade.onboardDriver(driverDto));
   }
 
+  /**
+   * PUT Api to update an existing Driver entry.
+   * This API validates the request and updates the updatable data.
+   * This API expects OAuth2 Header, that validates request comes from the same user.
+   *
+   * @param driverId - the ID of driver to update
+   * @param driverDto - the details of driver
+   * @return Response<DriverDto> with updated Driver Data
+   *          or error description upon failure.
+   */
   @PutMapping(value = "/{driverId}")
   // @UserManagementAuth - to validate Oauth2 header, and to ensure the request
   //                        came from the user to update
@@ -43,6 +53,16 @@ public class DriverManagementController {
     return Response.success(driverManagementFacade.updateDriverData(driverId, driverDto));
   }
 
+  /**
+   * PUT Api to update Driver status.
+   * This API validates the request and updates the Driver Status.
+   * This API expects OAuth2 Header, that validates request comes from the same user.
+   *
+   * @param driverId - the ID of driver to update
+   * @param driverStatus - the status to update to
+   * @return Response<DriverDto> with updated Driver Data
+   *          or error description upon failure.
+   */
   @PutMapping(value = "/{driverId}/status/{status}")
   // @UserManagementAuth - to validate Oauth2 header, and to ensure the request
   //                        came from the user to update
